@@ -2,6 +2,10 @@ const { model, Schema } = require('mongoose');
 
 // Employee posting info model constructor
 const PostingModel = new Schema({
+    employee:{
+        type: Schema.Types.ObjectId,
+        ref: 'employee_auth'
+    },
     designation: {
         type: Schema.Types.ObjectId,
         ref: 'cadre_designation'
