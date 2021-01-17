@@ -1,10 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config();
 
 // Reference of express module
 const app = express();
 
+app.use(cors());
 // Parsing the Json data 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

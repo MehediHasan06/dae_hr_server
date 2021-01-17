@@ -11,20 +11,22 @@ const Secret = require('../../schema/secret/reg_secret');
 router.post('/signup_api', async (req,res) => {
     const { name, dob, pscMerit, appointmentGOdate, nationalId, email, password, phoneNumber, secret } = req.body;
 
-    // Simple validation
-    if (!name || !dob || !pscMerit || !appointmentGOdate || !nationalId || !email || !password || !phoneNumber || !secret) {
-        return res.status(400).json({ message : "PLease enter all fields"});
-    };
 
     // Check for existing user
     try{
+        // Simple validation
+        if (!name || !dob || !pscMerit || !appointmentGOdate || !nationalId || !email || !password || !phoneNumber || !secret) {
+            throw Error('PLease enter all fields');
+            // return res.status(400).json({ message : "PLease enter all fields"});
+        };
+
         const user = await Employee.findOne({ phoneNumber });
         if (user) throw Error('User already exists');
 
         const secret_match = await Secret.findOne({
             reg_secretKey : secret
         });
-        if (!secret_match) throw Error('Secret is not matching');
+        // if (!secret_match) throw Error('Secret is not matching');
 
         // Create salt & hash
         const salt = await bcrypt.genSalt(10);
@@ -62,13 +64,14 @@ router.post('/signup_api', async (req,res) => {
 // Employee Login
 router.post('/signin_api', async (req, res) => {
     const { phoneNumber, password } = req.body;
-    
-    // Simple validation
-    if(!phoneNumber || !password) {
-        return res.status(400).json({ message: 'Please enter all fields' });
-    };
 
-    try { 
+    try {
+        // Simple validation
+        if(!phoneNumber || !password) {
+            throw Error('Please enter all fields');
+            // return res.status(400).json({ message: 'Please enter all fields' });
+        };
+
         // Check for existing user 
         const user = await Employee.findOne({ phoneNumber });
         if (!user) throw Error('Employee user does not exist');

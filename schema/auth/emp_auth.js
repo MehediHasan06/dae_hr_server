@@ -32,7 +32,7 @@ const EmployeeSchema = new Schema({
         type: String,
         required: [true, 'Please, provide a phone number']
     },
-    type: {
+    empType: {
         type: String,
         default: 'employee'
     },
