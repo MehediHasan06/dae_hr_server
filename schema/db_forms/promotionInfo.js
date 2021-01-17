@@ -2,6 +2,10 @@ const { model, Schema } = require('mongoose');
 
 // Employee promotion info model constructor
 const PromotionSchema = new Schema({
+    employee:{
+        type: Schema.Types.ObjectId,
+        ref: 'employee_auth'
+    },
     dateOfPromotion: { 
         type: Date
     },

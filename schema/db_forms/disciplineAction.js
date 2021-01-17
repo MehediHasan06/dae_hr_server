@@ -2,6 +2,10 @@ const { model, Schema } = require('mongoose');
 
 // Employee Discipline Action model constructor
 const DisciplineAction = new Schema({
+    employee:{
+        type: Schema.Types.ObjectId,
+        ref: 'employee_auth'
+    },
     offense: {
         type: String,
     },

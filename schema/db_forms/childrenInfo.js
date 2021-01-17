@@ -2,6 +2,10 @@ const { model, Schema } = require('mongoose');
 
 // Employee Children Info model constructor
 const ChildrenModel = new Schema({
+    employee:{
+        type: Schema.Types.ObjectId,
+        ref: 'employee_auth'
+    },
     name: {
         type: String  
     },
