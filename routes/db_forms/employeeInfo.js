@@ -1,5 +1,7 @@
 const router = require('express').Router();
 
+const BasicInfoModel = require('../../schema/auth/emp_auth');
+
 const GeneralInfoModel = require('../../schema/db_forms/generelInfo');
 const AddressInfoModel = require('../../schema/db_forms/addressInfo');
 const ChildInfoModel = require('../../schema/db_forms/childrenInfo');
@@ -30,6 +32,24 @@ router.post('/addGeneralInfo', async (req, res) => {
         }); 
     }
 });
+
+// @GET  -  /getGeneralInfo
+// Route to get the general information
+// router.get('/getGeneralInfo', async (req, res) => {
+//     console.log(BasicInfoModel);
+//     try{
+//         const generalInfo = await GeneralInfoModel.find();
+//         res.send({
+//             success: true,
+//             generalInfo: generalInfo
+//         });
+//     } catch(error){
+//         res.send({
+//             success: false, 
+//             message: error.message 
+//         });
+//     }
+// });
 
 // @POST  -  /addAddressInfo
 // Route for Address Information form                           

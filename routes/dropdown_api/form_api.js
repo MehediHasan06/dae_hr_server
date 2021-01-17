@@ -9,6 +9,25 @@ const BcsDivisionModel = require('../../schema/dropdown_api/bcs_division');
 const CadreOfficeModel = require('../../schema/dropdown_api/cadre_office');
 const CadreDesignationModel = require('../../schema/dropdown_api/cadre_designation');
 
+
+// @get  -  /getDistrict
+// API for getting districts
+router.get('/getDistrict', async (req, res)=> {
+    try{
+        const districtData = await DistrictModel.find();
+        res.send({
+            success: true,
+            message: `Hurre !`,
+            data: districtData
+        });
+    } catch(error){
+        res.send({
+            success: false, 
+            message: error.message 
+        });
+    }
+});
+
 // @POST  -  /addDistrict
 // API for adding home district
 router.post('/addDistrict', async (req, res) => {
@@ -24,6 +43,24 @@ router.post('/addDistrict', async (req, res) => {
             success: false, 
             message: error.message 
         });        
+    }
+});
+
+// @get  -  /getUpazilla
+// API for getting upazillas
+router.get('/getUpazilla', async (req, res)=> {
+    try{
+        const upazillaData = await UpazillaModel.find();
+        res.send({
+            success: true,
+            message: `Hurre !`,
+            data: upazillaData
+        });
+    } catch(error){
+        res.send({
+            success: false, 
+            message: error.message 
+        });
     }
 });
 
@@ -45,6 +82,24 @@ router.post('/addUpazilla', async (req, res) =>{
     }
 });
 
+// @get  -  /getPostOffice
+// API for getting post offices
+router.get('/getPostOffice', async (req, res)=> {
+    try{
+        const postOfficeData = await PostOfficeModel.find();
+        res.send({
+            success: true,
+            message: `Hurre !`,
+            data: postOfficeData
+        });
+    } catch(error){
+        res.send({
+            success: false, 
+            message: error.message 
+        });
+    }
+});
+
 // @POST  -  /addPostOffice
 // API for adding Post Office
 router.post('/addPostOffice', async (req, res) => {
@@ -60,6 +115,24 @@ router.post('/addPostOffice', async (req, res) => {
             success: false, 
             message: error.message 
         }); 
+    }
+});
+
+// @get  -  /get
+// API for getting districts
+router.get('/getDistrict', async (req, res)=> {
+    try{
+        const districtData = await DistrictModel.find();
+        res.send({
+            success: true,
+            message: `Hurre !`,
+            data: districtData
+        });
+    } catch(error){
+        res.send({
+            success: false, 
+            message: error.message 
+        });
     }
 });
 
