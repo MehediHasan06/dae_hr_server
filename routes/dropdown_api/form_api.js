@@ -46,6 +46,7 @@ router.post('/addDistrict', async (req, res) => {
     }
 });
 
+
 // @get  -  /getUpazilla
 // API for getting upazillas
 router.get('/getUpazilla', async (req, res)=> {
@@ -81,6 +82,7 @@ router.post('/addUpazilla', async (req, res) =>{
         });  
     }
 });
+
 
 // @get  -  /getPostOffice
 // API for getting post offices
@@ -118,15 +120,16 @@ router.post('/addPostOffice', async (req, res) => {
     }
 });
 
-// @get  -  /get
-// API for getting districts
-router.get('/getDistrict', async (req, res)=> {
+
+// @get  -  /getBatch
+// API for getting BCS batches
+router.get('/getBatch', async (req, res)=> {
     try{
-        const districtData = await DistrictModel.find();
+        const BatchData = await BcsBatchModel.find();
         res.send({
             success: true,
             message: `Hurre !`,
-            data: districtData
+            data: BatchData
         });
     } catch(error){
         res.send({
@@ -154,6 +157,25 @@ router.post('/addBatch', async (req, res) => {
     }
 });
 
+
+// @get  -  /getRank
+// API for getting ranks
+router.get('/getRank', async (req, res)=> {
+    try{
+        const rankData = await BcsRankModel.find();
+        res.send({
+            success: true,
+            message: `Hurre !`,
+            data: rankData
+        });
+    } catch(error){
+        res.send({
+            success: false, 
+            message: error.message 
+        });
+    }
+});
+
 // @POST  -  /addRank
 // API for adding a new rank
 router.post('/addRank', async (req, res) => {
@@ -172,6 +194,24 @@ router.post('/addRank', async (req, res) => {
     }
 });
 
+
+// @get  -  /getDivision
+// API for getting divisions
+router.get('/getDivision', async (req, res)=> {
+    try{
+        const divisionData = await BcsDivisionModel.find();
+        res.send({
+            success: true,
+            message: `Hurre !`,
+            data: divisionData
+        });
+    } catch(error){
+        res.send({
+            success: false, 
+            message: error.message 
+        });
+    }
+});
 // @POST  -  /addDivision
 // API for adding a new division
 router.post('/addDivision', async (req, res) => {
@@ -190,6 +230,23 @@ router.post('/addDivision', async (req, res) => {
     }
 });
 
+// @get  -  /getOffice
+// API for getting offices
+router.get('/getOffice', async (req, res)=> {
+    try{
+        const officeData = await CadreOfficeModel.find();
+        res.send({
+            success: true,
+            message: `Hurre !`,
+            data: officeData
+        });
+    } catch(error){
+        res.send({
+            success: false, 
+            message: error.message 
+        });
+    }
+});
 
 // @POST  -  /addOffice
 // API for adding a new Cadre Office
@@ -200,6 +257,24 @@ router.post('/addOffice', async (req, res) => {
         res.send({ 
             success: true,
             message: `New Cadre Office is added !`
+        });
+    } catch(error){
+        res.send({
+            success: false, 
+            message: error.message 
+        });
+    }
+});
+
+// @get  -  /getDesignation
+// API for getting designations
+router.get('/getDesignation', async (req, res)=> {
+    try{
+        const designationData = await CadreDesignationModel.find();
+        res.send({
+            success: true,
+            message: `Hurre !`,
+            data: designationData
         });
     } catch(error){
         res.send({
