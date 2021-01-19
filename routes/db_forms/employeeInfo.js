@@ -69,6 +69,24 @@ router.post('/addAddressInfo', async (req, res) => {
     }
 });
 
+// @POST  - /addAwardInfo
+// Route for Award Information Form
+router.post('/addAwardInfo', async (req, res) => {
+    try{
+        const awardInfo = new AwardInfoModel(req.body);
+        await awardInfo.save();
+        res.send({ 
+            success: true,
+            message: `New Award Information is added !`
+        });
+    }catch(error){
+        res.send({
+            success: false,
+            message: error.message   
+        });
+    }
+});
+
 // @POST  -  /addChildInfo
 // Route for Children Information form                           
 router.post('/addChildInfo', async (req, res) => {
@@ -177,8 +195,6 @@ router.post('/addPublicationInfo', async (req, res) => {
     }
 })
 
-
-
 // @POST  -  /addSpouseInfo
 // Route for Spouse Information form 
 router.post('/addSpouseInfo', async (req, res) => {
@@ -196,7 +212,6 @@ router.post('/addSpouseInfo', async (req, res) => {
         });
     }
 })
-
 
 // @POST  - /addTrainingInfo
 // Route for Training Information Form
@@ -225,46 +240,6 @@ router.post('/addTravelInfo', async (req, res) => {
         res.send({ 
             success: true,
             message: `New Travel Information is added !`
-        });
-    } catch(error){
-        res.send({
-            success: false,
-            message: error.message   
-        });
-    }
-});
-
-// @POST  - /addAwardInfo
-// Route for Award Information Form
-router.post('/addAwardInfo', async (req, res) => {
-    try{
-        const awardInfo = new AwardInfoModel(req.body);
-        await awardInfo.save();
-        res.send({ 
-            success: true,
-            message: `New Award Information is added !`
-        });
-    }catch(error){
-        res.send({
-            success: false,
-            message: error.message   
-        });
-    }
-});
-
-
-
-
-
-// @POST  -  /addPublicationInfo 
-// Route for Publication Information Form
-router.post('/addPublicationInfo', async (req, res) => {
-    try{
-        const publicationInfo = new PublicationModel(req.body);
-        await publicationInfo.save();
-        res.send({ 
-            success: true,
-            message: `New Publication Information is added !`
         });
     } catch(error){
         res.send({

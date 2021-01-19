@@ -27,7 +27,7 @@ const TrainingModel = new Schema({
     startingDate: {
         type: String
     },
-    ending_Date: {
+    endingDate: {
         type: String
     },    
 });
