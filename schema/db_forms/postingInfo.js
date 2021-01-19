@@ -19,10 +19,10 @@ const PostingModel = new Schema({
     orderDate: {
         type: Date
     },
-    JoiningDate: {
+    joiningDate: {
         type: Date
     },
-    payscale: {
+    payScale: {
         type: Schema.Types.ObjectId,
         ref: 'cadre_payScale'
     },

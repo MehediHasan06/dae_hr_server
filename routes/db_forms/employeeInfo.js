@@ -87,24 +87,6 @@ router.post('/addChildInfo', async (req, res) => {
     }
 });
 
-// @POST  -  /addSpouseInfo
-// Route for Spouse Information form 
-router.post('/addSpouseInfo', async (req, res) => {
-    try{
-        const spouseInfo = new SpouseInfoModel(req.body);
-        await spouseInfo.save();
-        res.send({ 
-            success: true,
-            message: `New Spouse Information is added !`
-        });
-    }catch(error){
-        res.send({
-            success: false,
-            message: error.message   
-        });
-    }
-})
-
 // @POST  -  /adddisciplineAction
 // Route for Disciplinary Action Form                                                       
 router.post('/adddisciplineAction', async (req, res) => {
@@ -134,60 +116,6 @@ router.post('/addEduInfo', async (req, res) => {
             message: `New Educational Information is added !`
         });
     } catch(error){
-        res.send({
-            success: false,
-            message: error.message   
-        });
-    }
-});
-
-// @POST  - /addTrainingInfo
-// Route for Training Information Form
-router.post('addTrainingInfo', async (req, res) => {
-    try{
-        const trainingInfo = new TrainingInfoModel(req.body);
-        await trainingInfo.save();
-        res.send({ 
-            success: true,
-            message: `New Training Information is added !`
-        });
-    } catch (err) {
-        res.send({
-            success: false,
-            message: error.message   
-        });
-    }
-});
-
-// @POST  - /addTravelInfo
-// Route for Travel Information Form
-router.post('/addTravelInfo', async (req, res) => {
-    try{
-        const travelInfo = new TravelInfoModel(req.body);
-        await travelInfo.save();
-        res.send({ 
-            success: true,
-            message: `New Travel Information is added !`
-        });
-    } catch(error){
-        res.send({
-            success: false,
-            message: error.message   
-        });
-    }
-});
-
-// @POST  - /addAwardInfo
-// Route for Award Information Form
-router.post('/addAwardInfo', async (req, res) => {
-    try{
-        const awardInfo = new AwardInfoModel(req.body);
-        await awardInfo.save();
-        res.send({ 
-            success: true,
-            message: `New Award Information is added !`
-        });
-    }catch(error){
         res.send({
             success: false,
             message: error.message   
@@ -248,5 +176,102 @@ router.post('/addPublicationInfo', async (req, res) => {
         });
     }
 })
+
+
+
+// @POST  -  /addSpouseInfo
+// Route for Spouse Information form 
+router.post('/addSpouseInfo', async (req, res) => {
+    try{
+        const spouseInfo = new SpouseInfoModel(req.body);
+        await spouseInfo.save();
+        res.send({ 
+            success: true,
+            message: `New Spouse Information is added !`
+        });
+    }catch(error){
+        res.send({
+            success: false,
+            message: error.message   
+        });
+    }
+})
+
+
+// @POST  - /addTrainingInfo
+// Route for Training Information Form
+router.post('addTrainingInfo', async (req, res) => {
+    try{
+        const trainingInfo = new TrainingInfoModel(req.body);
+        await trainingInfo.save();
+        res.send({ 
+            success: true,
+            message: `New Training Information is added !`
+        });
+    } catch (err) {
+        res.send({
+            success: false,
+            message: error.message   
+        });
+    }
+});
+
+// @POST  - /addTravelInfo
+// Route for Travel Information Form
+router.post('/addTravelInfo', async (req, res) => {
+    try{
+        const travelInfo = new TravelInfoModel(req.body);
+        await travelInfo.save();
+        res.send({ 
+            success: true,
+            message: `New Travel Information is added !`
+        });
+    } catch(error){
+        res.send({
+            success: false,
+            message: error.message   
+        });
+    }
+});
+
+// @POST  - /addAwardInfo
+// Route for Award Information Form
+router.post('/addAwardInfo', async (req, res) => {
+    try{
+        const awardInfo = new AwardInfoModel(req.body);
+        await awardInfo.save();
+        res.send({ 
+            success: true,
+            message: `New Award Information is added !`
+        });
+    }catch(error){
+        res.send({
+            success: false,
+            message: error.message   
+        });
+    }
+});
+
+
+
+
+
+// @POST  -  /addPublicationInfo 
+// Route for Publication Information Form
+router.post('/addPublicationInfo', async (req, res) => {
+    try{
+        const publicationInfo = new PublicationModel(req.body);
+        await publicationInfo.save();
+        res.send({ 
+            success: true,
+            message: `New Publication Information is added !`
+        });
+    } catch(error){
+        res.send({
+            success: false,
+            message: error.message   
+        });
+    }
+});
 
 module.exports = router;

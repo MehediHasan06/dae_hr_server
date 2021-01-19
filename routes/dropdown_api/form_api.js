@@ -8,6 +8,7 @@ const BcsRankModel = require('../../schema/dropdown_api/bcs_rank');
 const BcsDivisionModel = require('../../schema/dropdown_api/bcs_division');
 const CadreOfficeModel = require('../../schema/dropdown_api/cadre_office');
 const CadreDesignationModel = require('../../schema/dropdown_api/cadre_designation');
+const PayScaleModel = require('../../schema/dropdown_api/cadre_payScale');
 
 
 // @get  -  /getDistrict
@@ -230,6 +231,7 @@ router.post('/addDivision', async (req, res) => {
     }
 });
 
+
 // @get  -  /getOffice
 // API for getting offices
 router.get('/getOffice', async (req, res)=> {
@@ -266,7 +268,8 @@ router.post('/addOffice', async (req, res) => {
     }
 });
 
-// @get  -  /getDesignation
+
+// @GET  -  /getDesignation
 // API for getting designations
 router.get('/getDesignation', async (req, res)=> {
     try{
@@ -301,5 +304,42 @@ router.post('/addDesignation', async (req, res) => {
         });
     }
 });
+
+// @GET  -  /getPayScale
+// API for getting Payscale
+router.get('/getPayScale', async (req, res)=> {
+    try{
+        const payScaleData = await PayScaleModel.find();
+        res.send({
+            success: true,
+            message: `Hurre !`,
+            data: payScaleData
+        });
+    } catch(error){
+        res.send({
+            success: false, 
+            message: error.message 
+        });
+    }
+});
+
+// @POST  -  /addPayScale
+// API for adding a payscale
+router.post('/addPayScale', async (req, res) => {
+    try{
+        const payScale = new PayScaleModel(req.body);
+        await payScale.save();
+        res.send({ 
+            success: true,
+            message: `New Cadre payscale is added !`
+        });
+    } catch(error){
+        res.send({
+            success: false, 
+            message: error.message 
+        });
+    }
+});
+
 
 module.exports = router;
